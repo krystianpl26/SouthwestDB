@@ -23,6 +23,7 @@ def view_all(table_name):
     except mysql.connector.Error as err:
         print(f"Error viewing records from {table_name}:", err)
 
+
 # Connect to the database (Replace with your details)
 try:
     mydb = mysql.connector.connect(
@@ -72,3 +73,4 @@ while True:
 # Close the cursor and connection
 mycursor.close()
 mydb.close()
+

@@ -1,0 +1,157 @@
+import mysql.connector
+
+# Connect to the database (Replace with your details)
+try:
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="Admin101",
+        port="3306",
+        database="SouthWestDB"
+    )
+except mysql.connector.Error as err:
+    print("Error connecting to the database:", err)
+    exit(1)
+
+# Function to display the menu
+def display_menu():
+    print("\n===== Southwest Database Menu =====")
+    print("1. Manage Flights")
+    print("2. Manage Rewards Programs")
+    print("3. Manage Customers")
+    print("4. Manage Payments")
+    print("5. Manage Bookings")
+    print("6. Manage Customer Service Representatives")
+    print("7. Manage Special Offers")
+    print("8. Manage Crew")
+    print("9. Exit")
+
+
+# Function to view all records in a table
+def view_all(table_name):
+    try:
+        mycursor.execute(f"SELECT * FROM {table_name}")
+        records = mycursor.fetchall()
+        for record in records:
+            print(record)
+    except mysql.connector.Error as err:
+        print(f"Error viewing records from {table_name}:", err)
+
+def delete_entry(cursor):
+    """Delete an entry from the database."""
+    table_name = input("Enter the table name to delete an entry from: ")
+    column_name = input("Enter the column name to specify the entry: ")
+    column_value = input("Enter the value of the column to delete: ")
+    try:
+        cursor.execute(f"DELETE FROM {table_name} WHERE {column_name} = %s", (column_value,))
+        print("Entry deleted successfully.")
+    except mysql.connector.Error as err:
+        print(f"Error deleting entry: {err}")
+# Connect to the database (Replace with your details)
+try:
+    mydb = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="Admin101",
+        port="3306",
+        database="SouthWestDB"
+    )
+except mysql.connector.Error as err:
+    print("Error connecting to the database:", err)
+    exit(1)
+
+# Create a cursor object
+mycursor = mydb.cursor()
+
+#creating add_new function
+
+def delete_entry(cursor, table_name):
+    column_name = input("Enter the column name to specify the entry: ")
+    column_value = input("Enter the value of the column to delete: ")
+    try:
+        cursor.execute(f"DELETE FROM {table_name} WHERE {column_name} = %s", (column_value,))
+        print("Entry deleted successfully.")
+    except mysql.connector.Error as err:
+        print(f"Error deleting entry: {err}")
+def add_new(table_name):
+        table_fields = {
+            'Flight': ['FlightID', 'DepartureAirport', 'ArrivalAirport', 'DepartureTime', 'ArrivalTime', 'Date'],
+            'RewardsProgram': ['CustomerID', 'PointsEarned', 'PointsRedeemed'],
+            'Customer': ['CustomerID', 'FirstName', 'LastName', 'Email', 'PhoneNumber', 'Street', 'City', 'FlightID'],
+            'Payment': ['PaymentID', 'Cost', 'PaymentMethod'],
+            'Booking': ['BookingID', 'BookingDate', 'SeatNumber', 'FlightID', 'CustomerID', 'PaymentID'],
+            'CustomerServiceRepresentative': ['ServiceID', 'ServiceStatus', 'ContactMethod', 'ContactDetails', 'CustomerID'],
+            'SpecialOffer': ['OfferID', 'Discount%', 'CustomerID'],
+            'Crew': ['CrewID', 'FirstName', 'LastName', 'Role', 'FlightID']
+    }
+        #error check for non existing table
+        if table_name not in table_fields:
+            print("Table not recognized.")
+            return
+
+        #insert into statement
+        fields = table_fields[table_name]
+        placeholders = ', '.join(['%s'] * len(fields))
+        insert_query = f"INSERT INTO {table_name} ({', '.join(fields)}) VALUES ({placeholders})"
+
+        #obtain value of user
+        values = [input(f"Provide {field}: ") for field in fields]
+
+        #executing insert command
+        try:
+            mycursor.execute(insert_query, tuple(values))
+            mydb.commit()
+            print(f"Successfully added new record to {table_name}")
+        except mysql.connector.Error as err:
+            print(f"Error adding new record to {table_name}")
+def delete_entry(cursor):
+    """Delete an entry from the database."""
+    table_name = input("Enter the table name to delete an entry from: ")
+    column_name = input("Enter the column name to specify the entry: ")
+    column_value = input("Enter the value of the column to delete: ")
+    try:
+        mycursor.execute(f"DELETE FROM {table_name} WHERE {column_name} = %s", (column_value,))
+        print("Entry deleted successfully.")
+    except mysql.connector.Error as err:
+        print(f"Error deleting entry: {err}")
+# Main loop for menu interaction
+while True:
+    display_menu()
+    choice = input("Enter your choice: ")
+
+    if choice == "9":  # Exit
+        print("Exiting program.")
+        break
+
+    elif choice.isdigit() and 1 <= int(choice) <= 8:
+        table_names = ['Flight', 'RewardsProgram', 'Customer', 'Payment', 'Booking',
+                       'CustomerServiceRepresentative', 'SpecialOffer', 'Crew']
+        table_name = table_names[int(choice) - 1]
+        print(f"\n===== Manage {table_name} =====")
+        print("1. View All")
+        print("2. Add New")
+        print("3. Update Details")
+        print("4. Delete")
+        print("5. Back to Main Menu")
+        sub_choice = input("Enter your choice: ")
+
+        if sub_choice == "1":  # View All
+            print(f"\n===== All {table_name}s =====")
+            view_all(table_name)
+
+        # Add logic for other options (Add New, Update, Delete) here
+        elif  sub_choice == "2":
+            print(f"\n===== Enter {table_name} you want to add =====")
+            add_new(table_name)
+
+        elif  sub_choice == "3":
+            print(f"\n===== Enter {table_name} you want to update =====")
+            add_new(table_name)
+
+        elif  sub_choice == "4":
+            print(f"\n===== Enter {table_name} you want to delete =====")
+            delete_entry(table_name)
+
+# Close the cursor and connection
+mycursor.close()
+mydb.close()
