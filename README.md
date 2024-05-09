@@ -65,10 +65,7 @@ Action: Choose option 9 from the main menu, then select option 5 for advanced ag
 Expected Result: Displays the running total of costs for each payment in the payment table.
 
 ## Contributions
--Aidan M.
--Jesus C.
--Jiafeng L.
--Krystian S.
+Aidan M., Jesus C., Jiafeng L., Krystian S.
 
 ## Disclaimer 
 This project is developed for educational purposes and is not affiliated with Southwest Airlines.
