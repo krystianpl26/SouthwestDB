@@ -1,7 +1,7 @@
 # Southwest Database Management System
 
 ## Project Description
-The Southwest Database Management System is a command-line tool developed in Python with MySQL as the backend. It facilitates the management of various aspects of Southwest Airlines operations, including customer data, bookings, payments, crew, etc. 
+This project is a command-line database management tool implemented in Python with MySQL as the backend. It is designed for managing various aspects of Southwest Airlines operations, including customer data, bookings, payments, crew, and more. The tool provides a user-friendly interface for executing various SQL queries on different tables in the database.
 
 ### Key Features:
 - **CRUD Operations:** Perform Create, Read, Update, and Delete operations on tables such as Flight, Customer, Payment, Booking, Crew, etc.
