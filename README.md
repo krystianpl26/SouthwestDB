@@ -65,7 +65,10 @@ Action: Choose option 9 from the main menu, then select option 5 for advanced ag
 Expected Result: Displays the running total of costs for each payment in the payment table.
 
 ## 🤝Contributions
-Aidan M., Jesus C., Jiafeng L., Krystian S.
+- Aidan M. ([@Amaulsby](https://github.com/Amaulsby))
+- Jesus C. ([@RamenGad](https://github.com/RamenGad))
+- Jiafeng L. ([@jli239](https://github.com/jli239))
+- Krystian S. ([@krystianpl26](https://github.com/krystianpl26))
 
 ## ⚠️Disclaimer 
 This project is developed for educational purposes and is not affiliated with Southwest Airlines.
