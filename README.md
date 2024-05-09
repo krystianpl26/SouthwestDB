@@ -14,7 +14,7 @@ The Southwest Database Management System is a command-line tool developed in Pyt
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Test Cases](#testcases)
+- [Tests](#tests)
 - [Contributions](#contributions)
 - [Disclaimer](#disclaimer)
 
@@ -31,7 +31,7 @@ The Southwest Database Management System is a command-line tool developed in Pyt
 2. Choose options to perform CRUD operations, complex queries, etc.
 3. Follow the on-screen instructions to input required or desired information and observe the output.
 
-## Test Cases
+## Tests
 **1. Performing CRUD Operations:**
 
 Test Case: View the entire "Flight" table.
