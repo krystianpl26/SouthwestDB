@@ -6,6 +6,11 @@ from rich.console import Console
 from rich.text import Text
 import pyfiglet
 colorama.init()
+import time
+from colorama import Fore, Style, init
+
+# Initialize colorama
+init()
 
 # Connect to the database (Replace with your details)
 try:
@@ -54,26 +59,26 @@ def display_start():
     print("     --o--o--(_)--o--o--               --o--o--(_)--o--o--               --o--o--(_)--o--o--               --o--o--(_)--o--o--")
 
 def display_menu():
-    print("\n\033[1m\033[34m===== Southwest Database Menu =====\033[0m")
-    print("\033[94m1. Manage Flights\033[0m")
-    print("\033[91m2. Manage Rewards Programs\033[0m")
-    print("\033[33m3. Manage Customers\033[0m")
-    print("\033[94m4. Manage Payments\033[0m")
-    print("\033[91m5. Manage Bookings\033[0m")
-    print("\033[33m6. Manage Customer Service Representatives\033[0m")
-    print("\033[94m7. Manage Special Offers\033[0m")
-    print("\033[91m8. Manage Crew\033[0m")
-    print("\033[33m9. Complex Queries\033[0m")
-    print("\033[34m10. Exit\033[0m")
+    print("\n" + Style.BRIGHT + Fore.BLUE + "===== Southwest Database Menu =====" + Style.RESET_ALL)
+    print(Fore.CYAN + "1. Manage Flights" + Style.RESET_ALL)
+    print(Fore.RED + "2. Manage Rewards Programs" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Manage Customers" + Style.RESET_ALL)
+    print(Fore.CYAN + "4. Manage Payments" + Style.RESET_ALL)
+    print(Fore.RED + "5. Manage Bookings" + Style.RESET_ALL)
+    print(Fore.YELLOW + "6. Manage Customer Service Representatives" + Style.RESET_ALL)
+    print(Fore.CYAN + "7. Manage Special Offers" + Style.RESET_ALL)
+    print(Fore.RED + "8. Manage Crew" + Style.RESET_ALL)
+    print(Fore.YELLOW + "9. Complex Queries" + Style.RESET_ALL)
+    print(Fore.BLUE + "10. Exit" + Style.RESET_ALL)
 
 def display_submenu():
-    print(f"\n\033[1m\033[34m===== Manage {table_name} =====\033[0m")
-    print("\033[94m1. View All\033[0m")
-    print("\033[91m2. Add New\033[0m")
-    print("\033[33m3. Update Details\033[0m")
-    print("\033[94m4. Delete\033[0m")
-    print("\033[91m5. Back to Main Menu\033[0m")
-    print("\033[1m\033[34m=========================\033[0m")
+    print(f"\n{Style.BRIGHT + Fore.BLUE}===== Manage {table_name} ====={Style.RESET_ALL}")
+    print(Fore.CYAN + "1. View All" + Style.RESET_ALL)
+    print(Fore.RED + "2. Add New" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Update Details" + Style.RESET_ALL)
+    print(Fore.CYAN + "4. Delete" + Style.RESET_ALL)
+    print(Fore.RED + "5. Back to Main Menu" + Style.RESET_ALL)
+    print(Style.BRIGHT + Fore.BLUE + "=========================" + Style.RESET_ALL)
     sub_choice = input("Enter your choice: ")
 
     if sub_choice == "1":  # View All
@@ -117,13 +122,13 @@ def display_submenu():
         display_submenu()
 
 def display_view_menu():
-    print("\033[1m\033[34mChoose the type of query you want to see:\033[0m")
-    print("\033[91m1. Customer-Flight\033[0m")
-    print("\033[94m2. Customer-Booking\033[0m")
-    print("\033[33m3. Customer-Payment\033[0m")
-    print("\033[91m4. Customer-RewardsProgram\033[0m")
-    print("\033[94m5. Customer-SpecialOffer\033[0m")
-    print("\033[33m6. Customer-CustomerServiceRepresentative \033[0m")
+    print(f"{Style.BRIGHT + Fore.BLUE}Choose the type of query you want to see:{Style.RESET_ALL}")
+    print(Fore.RED + "1. Customer-Flight" + Style.RESET_ALL)
+    print(Fore.CYAN + "2. Customer-Booking" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Customer-Payment" + Style.RESET_ALL)
+    print(Fore.RED + "4. Customer-RewardsProgram" + Style.RESET_ALL)
+    print(Fore.CYAN + "5. Customer-SpecialOffer" + Style.RESET_ALL)
+    print(Fore.YELLOW + "6. Customer-CustomerServiceRepresentative" + Style.RESET_ALL)
 
     view_choice = input("Enter your choice: ")
     if view_choice == "1":  # c-f
@@ -142,14 +147,14 @@ def display_view_menu():
         print("Invalid view")
 
 def display_query_menu():
-    print("\n\033[1m\033[34mChoose the type of view you want to run: \033[0m")
-    print("\033[94m1. Set Operations\033[0m")
-    print("\033[91m2. Set Membership\033[0m")
-    print("\033[33m3. Set Comparison\033[0m")
-    print("\033[94m4. Subqueries using the WITH Clause\033[0m")
-    print("\033[91m5. Advanced Aggregate Functions\033[0m")
-    print("\033[33m6. OLAP\033[0m")
-    print("\033[94m7. Back to Main Menu\033[0m")
+    print(f"\n{Style.BRIGHT + Fore.BLUE}Choose the type of view you want to run:{Style.RESET_ALL}")
+    print(Fore.CYAN + "1. Set Operations" + Style.RESET_ALL)
+    print(Fore.RED + "2. Set Membership" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Set Comparison" + Style.RESET_ALL)
+    print(Fore.CYAN + "4. Subqueries using the WITH Clause" + Style.RESET_ALL)
+    print(Fore.RED + "5. Advanced Aggregate Functions" + Style.RESET_ALL)
+    print(Fore.YELLOW + "6. OLAP" + Style.RESET_ALL)
+    print(Fore.CYAN + "7. Back to Main Menu" + Style.RESET_ALL)
 
     query_type = input("Enter your choice: ")
 
@@ -180,17 +185,18 @@ def display_query_menu():
 
 # Run queries that utilize set operation
 def display_query1_menu():
-    print("\n\033[1m\033[34mChoose the query you want to run: \033[0m")
-    print("\033[94m1. Display Customers on a Flight\033[0m")
-    print("\033[91m2. Count Passengers on a Flight\033[0m")
-    print("\033[33m3. Count Crews on a Flight\033[0m")
-    print("\033[94m4. Locate Customer's Flight\033[0m")
-    print("\033[91m5. Locate Customer's Payment\033[0m")
-    print("\033[33m6. Locate Customer's Service Request\033[0m")
-    print("\033[94m7. Locate Customer's Rewards\033[0m")
-    print("\033[91m8. View Current Points\033[0m")
-    print("\033[94m9. Views")
-    print("\033[33m10. Back to Query Menu \033[0m")
+    print(f"\n{Style.BRIGHT + Fore.BLUE}Choose the query you want to run:{Style.RESET_ALL}")
+    print(Fore.CYAN + "1. Display Customers on a Flight" + Style.RESET_ALL)
+    print(Fore.RED + "2. Count Passengers on a Flight" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Count Crews on a Flight" + Style.RESET_ALL)
+    print(Fore.CYAN + "4. Locate Customer's Flight" + Style.RESET_ALL)
+    print(Fore.RED + "5. Locate Customer's Payment" + Style.RESET_ALL)
+    print(Fore.YELLOW + "6. Locate Customer's Service Request" + Style.RESET_ALL)
+    print(Fore.CYAN + "7. Locate Customer's Rewards" + Style.RESET_ALL)
+    print(Fore.RED + "8. View Current Points" + Style.RESET_ALL)
+    print(Fore.CYAN + "9. Views" + Style.RESET_ALL)
+    print(Fore.YELLOW + "10. Back to Query Menu" + Style.RESET_ALL)
+
 
     operation_query_choice = input("Enter your choice: ")
 
@@ -229,14 +235,14 @@ def display_query1_menu():
 
 # Run queries that utilize set membership
 def display_query2_menu():
-    print("\n\033[1m\033[34mChoose the query you want to run: \033[0m")
-    print("\033[94m1. Cancel a Booking\033[0m")
-    print("\033[91m2. Cancel a Flight\033[0m")
-    print("\033[33m3. Search Customer by City\033[0m")
-    print("\033[94m4. Search Crew by Role\033[0m")
-    print("\033[91m5. Search Booking by Flight\033[0m")
-    print("\033[33m6. Search Payment by Payment Method\033[0m")
-    print("\033[91m7. Back to Query Menu\033[0m")
+    print(f"\n{Style.BRIGHT + Fore.BLUE}Choose the query you want to run:{Style.RESET_ALL}")
+    print(Fore.CYAN + "1. Cancel a Booking" + Style.RESET_ALL)
+    print(Fore.RED + "2. Cancel a Flight" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Search Customer by City" + Style.RESET_ALL)
+    print(Fore.CYAN + "4. Search Crew by Role" + Style.RESET_ALL)
+    print(Fore.RED + "5. Search Booking by Flight" + Style.RESET_ALL)
+    print(Fore.YELLOW + "6. Search Payment by Payment Method" + Style.RESET_ALL)
+    print(Fore.RED + "7. Back to Query Menu" + Style.RESET_ALL)
 
     membership_query_choice = input("Enter your choice: ")
 
@@ -266,16 +272,16 @@ def display_query2_menu():
 
 # Run queries that utilize set comparisons
 def display_query3_menu():
-    print("\n\033[1m\033[34mChoose the query you want to run: \033[0m")
-    print("\033[94m1. Filter by Unresolved Customer Service Tickets\033[0m")
-    print("\033[91m2. Display Flight Durations\033[0m")
-    print("\033[33m3. Check Greater Payments\033[0m")
-    print("\033[33m4. Check Lesser Payments\033[0m")
-    print("\033[94m5. Check Greater Points\033[0m")
-    print("\033[94m6. Check Lesser Points\033[0m")
-    print("\033[91m7. Check Later Flight Departuer Time\033[0m")
-    print("\033[91m8. Check Later Flight Arrival Time\033[0m")
-    print("\033[33m9. Back to Query Menu\033[0m")
+    print(f"\n{Style.BRIGHT + Fore.BLUE}Choose the query you want to run:{Style.RESET_ALL}")
+    print(Fore.CYAN + "1. Filter by Unresolved Customer Service Tickets" + Style.RESET_ALL)
+    print(Fore.RED + "2. Display Flight Durations" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Check Greater Payments" + Style.RESET_ALL)
+    print(Fore.YELLOW + "4. Check Lesser Payments" + Style.RESET_ALL)
+    print(Fore.CYAN + "5. Check Greater Points" + Style.RESET_ALL)
+    print(Fore.CYAN + "6. Check Lesser Points" + Style.RESET_ALL)
+    print(Fore.RED + "7. Check Later Flight Departure Time" + Style.RESET_ALL)
+    print(Fore.RED + "8. Check Later Flight Arrival Time" + Style.RESET_ALL)
+    print(Fore.YELLOW + "9. Back to Query Menu" + Style.RESET_ALL)
 
     comparison_query_choice = input("Enter your choice: ")
 
@@ -311,12 +317,12 @@ def display_query3_menu():
 
 # Run queries contained in the "WITH" clause
 def display_query4_menu():
-    print("\n\033[1m\033[34mChoose the query you want to run:\033[0m")
-    print("\033[94m1. Find Top % of Paying Customers\033[0m")
-    print("\033[91m2. Cheapest and Most Expensive Payment\033[0m")
-    print("\033[33m3. Customer Loyalty by Z-Score for Points\033[0m")
-    print("\033[34m4. Shortest and Longest Flight Durations \033[0m")
-    print("\033[91m5. Back to Query Menu\033[0m")
+    print(f"\n{Style.BRIGHT + Fore.BLUE}Choose the query you want to run:{Style.RESET_ALL}")
+    print(Fore.CYAN + "1. Find Top % of Paying Customers" + Style.RESET_ALL)
+    print(Fore.RED + "2. Cheapest and Most Expensive Payment" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Customer Loyalty by Z-Score for Points" + Style.RESET_ALL)
+    print(Fore.BLUE + "4. Shortest and Longest Flight Durations" + Style.RESET_ALL)
+    print(Fore.RED + "5. Back to Query Menu" + Style.RESET_ALL)
 
     with_query_choice = input("Enter your choice: ")
 
@@ -340,15 +346,15 @@ def display_query4_menu():
 
 # Run queries involving advanced aggregate functions
 def display_query5_menu():
-    print("\n\033[1m\033[34mChoose the query you want to run:\033[0m")
-    print("\033[94m1. Calculate Running Total of Costs in Payment Table\033[0m")
-    print("\033[91m2. Moving Total of Revenue per Year from Customers\033[0m")
-    print("\033[33m3. Running Totals of Bookings per Flight\033[0m")
-    print("\033[94m4. Monthly Moving Averages and Running Totals for Booking per Year\033[0m")
-    print("\033[91m5. Customer Loyalty Tier By Points\033[0m")
-    print("\033[33m6. Calculate Customer's Discounted Price\033[0m")
-    print("\033[94m7. Customer's % Distribution to Total Revenue\033[0m")
-    print("\033[91m8. Back to Query Menu\033[0m")
+    print(f"\n{Style.BRIGHT + Fore.BLUE}Choose the query you want to run:{Style.RESET_ALL}")
+    print(Fore.CYAN + "1. Calculate Running Total of Costs in Payment Table" + Style.RESET_ALL)
+    print(Fore.RED + "2. Moving Total of Revenue per Year from Customers" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Running Totals of Bookings per Flight" + Style.RESET_ALL)
+    print(Fore.CYAN + "4. Monthly Moving Averages and Running Totals for Booking per Year" + Style.RESET_ALL)
+    print(Fore.RED + "5. Customer Loyalty Tier By Points" + Style.RESET_ALL)
+    print(Fore.YELLOW + "6. Calculate Customer's Discounted Price" + Style.RESET_ALL)
+    print(Fore.CYAN + "7. Customer's % Distribution to Total Revenue" + Style.RESET_ALL)
+    print(Fore.RED + "8. Back to Query Menu" + Style.RESET_ALL)
 
     advanced_query_choice = input("Enter your choice: ")
 
@@ -381,15 +387,15 @@ def display_query5_menu():
 
 # Run OLAP query
 def display_query6_menu():
-    print("\n\033[1m\033[34mChoose the OLAP query you want to run:\033[0m")
-    print("\033[94m1. Total Sales per Flight with Rollup\033[0m")
-    print("\033[91m2. Unique Bookings per Flight\033[0m")
-    print("\033[33m3. Customer Booking Frequency\033[0m")
-    print("\033[94m4. Customer Loyalty Tier By Bookings\033[0m")
-    print("\033[91m5. Total Revenue per Payment Method\033[0m")
-    print("\033[33m6. Crew Composition per Flight\033[0m")
-    print("\033[94m7. Total Contact Methods \033[0m")
-    print("\033[91m8. Back to Query Menu \033[0m")
+    print(f"\n{Style.BRIGHT + Fore.BLUE}Choose the OLAP query you want to run:{Style.RESET_ALL}")
+    print(Fore.CYAN + "1. Total Sales per Flight with Rollup" + Style.RESET_ALL)
+    print(Fore.RED + "2. Unique Bookings per Flight" + Style.RESET_ALL)
+    print(Fore.YELLOW + "3. Customer Booking Frequency" + Style.RESET_ALL)
+    print(Fore.CYAN + "4. Customer Loyalty Tier By Bookings" + Style.RESET_ALL)
+    print(Fore.RED + "5. Total Revenue per Payment Method" + Style.RESET_ALL)
+    print(Fore.YELLOW + "6. Crew Composition per Flight" + Style.RESET_ALL)
+    print(Fore.CYAN + "7. Total Contact Methods" + Style.RESET_ALL)
+    print(Fore.RED + "8. Back to Query Menu" + Style.RESET_ALL)
 
     olap_query_choice = input("Enter your choice: ")
 
@@ -798,15 +804,34 @@ def operation_query_1():
 # Count passengers on flight
 def operation_query_2():
     view_all("Flight")
-    FID = FID = input("Please enter a FlightID: ")
+    FID = input("Please enter a FlightID: ")
     try:
         query = f"""
         SELECT Booking.FlightID, BookingID, Customer.CustomerID, FirstName, LastName, FlightCount({FID}) 
         FROM Booking, Customer
         WHERE Booking.FlightID = {FID} AND Booking.CustomerID = Customer.CustomerID;
         """
+        
+        # Measure the query execution time
+        start_time = time.time()
         mycursor.execute(query)
-        display_table()
+        execution_end_time = time.time()
+        
+        # Measure the data retrieval time
+        retrieval_start_time = time.time()
+        results = mycursor.fetchall()
+        retrieval_end_time = time.time()
+        
+        # Calculate and print the execution and retrieval times
+        execution_time = execution_end_time - start_time
+        retrieval_time = retrieval_end_time - retrieval_start_time
+        
+        print(f"Query execution time: {execution_time:.6f} seconds")
+        print(f"Data retrieval time: {retrieval_time:.6f} seconds")
+        
+        # Display the results
+        for row in results:
+            print(row)
 
     except mysql.connector.Error as err:
         print("Error executing query:", err)
